@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <!--
+          Create a Form with the following Controls and Validators
+          1) Project Name (should not be empty)
+          2) Mail (should not be a empty and a valid email)
+          3) Project Status Dropdown, with three values: 'Stable', 'Critical', 'Finished'
+          4) Submit Button
+
+          Add your own Validator which doesn't allow "Test" as a Project Name
+
+          Also implement that Validator as an async Validator (replace the other one)
+
+          Upon submitting the form, simply print the value to the console
+      -->
+
+
+
+      <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+          <label for="projectname">Project Name</label>
+          <input type="text" class="form-control" formControlName="project_name" name="projectname"
+            placeholder="enter project name">
+
+          <span *ngIf="!projectForm.get('project_name')?.valid && projectForm.get('project_name')?.touched">
+            <span class="help-block" *ngIf="projectForm.get('project_name')?.hasError('forbiddenProjectName')">
+              please enter correct project name
+            </span>
+            <span class="help-block" *ngIf="projectForm.get('project_name')?.hasError('required')">
+              please enter project name
+            </span>
+          </span>
+
+        </div>
+
+
+        <div class="form-group">
+          <label for="email">email</label>
+          <input type="text" class="form-control" name='email' formControlName="mail" placeholder="enter mail name">
+          <span class="help-block" *ngIf="!projectForm.get('mail')?.valid && projectForm.get('mail')?.touched">
+            please enter mail
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label for="secret">Sub - Scriptions</label>
+          <select id="secret" class="form-control" formControlName="project_status" name="secret">
+            <option *ngFor="let subscription of projectStatus" [value]="subscription">
+              {{subscription}}</option>
+
+          </select>
+        </div>
+
+        <input type="submit" value="submit">
+      </form>
+
+
+
+    </div>
+  </div>
+</div>

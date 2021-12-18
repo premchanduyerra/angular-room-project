@@ -16,11 +16,7 @@ export class RecipesComponent implements OnInit {
   constructor(private recipeService:RecipeService) { }
 
   ngOnInit(): void {
-    this.recipeService.onselectedRecipe.subscribe((recipe:Recipe)=>{
-      this.recipeDetailClicked=recipe
-      console.log("sub");
-      
-    })
+ 
   }
 
 

@@ -1,10 +1,12 @@
-<app-header (HeaderClicked)="onHeaderClicked($event)"></app-header>
+<app-header></app-header>
 <div class="container">
   <div class="row">
-    <div class="col-md-5">
-      <app-recipes *ngIf="displayHeader==='recipes'"></app-recipes>
-      <hr>
-      <app-shopping-list *ngIf="displayHeader==='shopping'"></app-shopping-list>
+    <div class="col-md-12">
+
+
+      <router-outlet></router-outlet>
+
+
     </div>
   </div>
 </div>

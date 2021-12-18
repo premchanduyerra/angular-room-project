@@ -7,21 +7,11 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  @Output() HeaderClicked=new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  recipiesClicked(){
-    this.HeaderClicked.emit("recipes");
-    
-  }
 
-  shoppingClicked(){
-    this.HeaderClicked.emit("shopping");
-
-    
-  }
 }

@@ -14,7 +14,8 @@ constructor(private shoppingListService:ShoppingListService){}
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGTbUW1eFyFSP_m45F_wXjLSQfr1RE-IvSOg&usqp=CAU",
             [
                 new Ingredient('abc',1),
-                new Ingredient('bcd',2)
+                new Ingredient('bcd',2),
+                new Ingredient('hsdahbsadh',33)
             ]
             ),
         new Recipe(
@@ -40,7 +41,13 @@ constructor(private shoppingListService:ShoppingListService){}
         return this.recipes.slice()
     }
 
+    public getRecipe(index:number){
+        return this.recipes.slice()[index]
+    }
+
     addIngredientsToShoppingList(ingredients:Ingredient[]){
+
+
         this.shoppingListService.addIngredientArray(ingredients)
     }
 

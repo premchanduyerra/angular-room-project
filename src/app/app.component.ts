@@ -1,14 +1,56 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'my-app';
-  displayHeader:string='recipes'
-  onHeaderClicked(data:string){
-    this.displayHeader=data
+export class AppComponent implements OnInit {
+  loadedPosts = [];
+
+  constructor(private http: HttpClient) {}
+
+  ngOnInit() {
+    this.fetchPosts();
+  }
+
+  onCreatePost(postData: { title: string; content: string }) {
+    // Send Http request
+    this.http
+      .post(
+        'https://angular-backend-fc77b-default-rtdb.firebaseio.com/posts.json',
+        postData
+      )
+      .subscribe(responseData => {
+        console.log(responseData);
+      });
+  }
+
+  onFetchPosts() {
+    // Send Http request
+    this.fetchPosts();
+  }
+
+  onClearPosts() {
+    // Send Http request
+  }
+
+  fetchPosts(){
+    this.http.get("https://angular-backend-fc77b-default-rtdb.firebaseio.com/posts.json")
+    .pipe(map(resposeData=>{
+      let responseArray=[]
+      for(let key in resposeData){
+        responseArray.push({...resposeData[key],id:key})
+      }
+
+
+
+    }))
+    .subscribe(data=>{
+      console.log(data);
+
+    })
   }
 }

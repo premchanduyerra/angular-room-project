@@ -13,18 +13,24 @@ import { RecipeService } from '../recipe.service';
 export class RecipeDetailsComponent implements OnInit {
 
  recipeDetail!:Recipe;
-
+ id!:number;
   constructor(private RecipeService:RecipeService, private shoppingListService:ShoppingListService,private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
    this.route.params.subscribe((parms:Params)=>{
-    
-    const id=parms['id']
-     this.recipeDetail=this.RecipeService.getRecipe(id)
-     
+
+    this.id=parms['id']
+     this.recipeDetail=this.RecipeService.getRecipe(this.id)
+
    })
   }
   addToShoppingList(){
     this.shoppingListService.addIngredientArray(this.recipeDetail.ingredients)
   }
+
+  deleteRecipe(){
+    this.RecipeService.onDeleteRecipe(this.id)
+    this.router.navigate(['../'],{relativeTo:this.route})
+  }
+
 }

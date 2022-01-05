@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs';
+import { Post } from './post.model';
+import { PostService } from './post.service';
 
 @Component({
   selector: 'app-root',
@@ -8,24 +9,20 @@ import { map } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  loadedPosts = [];
+  loadedPosts:Post[] = [];
+  isFetching:boolean=false;
+  error=null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private postService:PostService) {}
 
   ngOnInit() {
     this.fetchPosts();
   }
 
-  onCreatePost(postData: { title: string; content: string }) {
-    // Send Http request
-    this.http
-      .post(
-        'https://angular-backend-fc77b-default-rtdb.firebaseio.com/posts.json',
-        postData
-      )
-      .subscribe(responseData => {
-        console.log(responseData);
-      });
+  onCreatePost(postData: Post) {
+
+   this.postService.createPostsAndStore(postData);
+
   }
 
   onFetchPosts() {
@@ -34,23 +31,21 @@ export class AppComponent implements OnInit {
   }
 
   onClearPosts() {
-    // Send Http request
+    this.postService.deleteAllPosts().subscribe((data)=>{
+      console.log(data);
+      this.loadedPosts=[]
+
+    })
   }
 
   fetchPosts(){
-    this.http.get("https://angular-backend-fc77b-default-rtdb.firebaseio.com/posts.json")
-    .pipe(map(resposeData=>{
-      let responseArray=[]
-      for(let key in resposeData){
-        responseArray.push({...resposeData[key],id:key})
-      }
-
-
-
-    }))
-    .subscribe(data=>{
-      console.log(data);
-
+    this.isFetching=true;
+    this.postService.fetchPosts().subscribe(data=>{
+      this.isFetching=false;
+      this.loadedPosts=data
+    },error=>{
+      this.isFetching=false
+      this.error=error.error.error
     })
   }
 }

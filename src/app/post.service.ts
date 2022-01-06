@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEventType, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { map, tap } from 'rxjs';
 import { Post } from './post.model';
 
 @Injectable({
@@ -26,8 +26,19 @@ export class PostService {
 
 
   fetchPosts(){
-
-        return this.http.get<{[key:string]:Post}>("https://angular-backend-fc77b-default-rtdb.firebaseio.com/posts.json")
+    let searchParams=new HttpParams();
+    searchParams=searchParams.append("print","pretty")
+    searchParams=searchParams.append("param1","heyyy")
+        return this.http
+        .get<{[key:string]:Post}>(
+          "https://angular-backend-fc77b-default-rtdb.firebaseio.com/posts.json",
+          {
+            headers:new HttpHeaders({
+              "my-header":"hello header"
+            }),
+            params:searchParams
+          }
+        )
         .pipe(map((resposeData)=>{
           let responseArray: Post[]=[]
           for(let key in resposeData){
@@ -40,7 +51,17 @@ export class PostService {
   }
 
   deleteAllPosts(){
-    return this.http.delete("https://angular-backend-fc77b-default-rtdb.firebaseio.com/posts.json")
+    return this.http.delete("https://angular-backend-fc77b-default-rtdb.firebaseio.com/posts.json",{
+      observe:'response'
+    })
+    .pipe(tap(event=>{
+      console.log(event);
+      if(event.type==HttpEventType.Response){
+        console.log("this is response event");
+
+      }
+
+    }))
   }
 
 

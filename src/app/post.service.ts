@@ -36,7 +36,8 @@ export class PostService {
             headers:new HttpHeaders({
               "my-header":"hello header"
             }),
-            params:searchParams
+            params:searchParams,
+            responseType:'json'
           }
         )
         .pipe(map((resposeData)=>{

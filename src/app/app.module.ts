@@ -1,3 +1,4 @@
+import { LodingSpinnerComponent } from './shared/loding-spinner/loding-spinner.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,6 +18,7 @@ import { AppRoutingModule } from './appRouting.module';
 import { SelectRecipeComponent } from './recipes/select-recipe/select-recipe.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ShoppingEditComponent,
     DropdownDirective,
     SelectRecipeComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    AuthComponent,
+    LodingSpinnerComponent
   ],
   imports: [
     BrowserModule,

@@ -7,10 +7,14 @@ import { RecipesResolverService } from "./recipes/recipes-resolver.service";
 import { RecipesComponent } from "./recipes/recipes.component";
 import { SelectRecipeComponent } from "./recipes/select-recipe/select-recipe.component";
 import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
+import { AuthGaurdService } from './auth/auth.gaurd';
 
 const routes:Routes=[
     {path:"",redirectTo:'/recipes',pathMatch:"full"},
-    {path:"recipes",component:RecipesComponent,children:[
+    {
+      path:"recipes",component:RecipesComponent,
+      canActivate:[AuthGaurdService],
+      children:[
         {path:'',component:SelectRecipeComponent},
 
         {path:'new',component:RecipeEditComponent},

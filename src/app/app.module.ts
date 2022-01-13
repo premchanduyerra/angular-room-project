@@ -20,6 +20,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthComponent } from './auth/auth.component';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
+import { AlertComponent } from './shared/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AuthInterceptorService } from './auth/auth-interceptor.service';
     SelectRecipeComponent,
     RecipeEditComponent,
     AuthComponent,
-    LodingSpinnerComponent
+    LodingSpinnerComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

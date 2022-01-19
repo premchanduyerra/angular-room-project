@@ -1,29 +1,9 @@
 import { AuthComponent } from './auth/auth.component';
 import { NgModule } from "@angular/core";
 import {  RouterModule, Routes } from "@angular/router";
-import { RecipeDetailsComponent } from "./recipes/recipe-details/recipe-details.component";
-import { RecipeEditComponent } from "./recipes/recipe-edit/recipe-edit.component";
-import { RecipesResolverService } from "./recipes/recipes-resolver.service";
-import { RecipesComponent } from "./recipes/recipes.component";
-import { SelectRecipeComponent } from "./recipes/select-recipe/select-recipe.component";
-import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
-import { AuthGaurdService } from './auth/auth.gaurd';
 
 const routes:Routes=[
     {path:"",redirectTo:'/recipes',pathMatch:"full"},
-    {
-      path:"recipes",component:RecipesComponent,
-      canActivate:[AuthGaurdService],
-      children:[
-        {path:'',component:SelectRecipeComponent},
-
-        {path:'new',component:RecipeEditComponent},
-
-        {path:':id',component:RecipeDetailsComponent,resolve:[RecipesResolverService]},
-        {path:':id/edit',component:RecipeEditComponent,resolve:[RecipesResolverService]},
-    ]},
-    {path:"shopping-list",component:ShoppingListComponent},
-    {path:"auth",component:AuthComponent}
 ]
 
 

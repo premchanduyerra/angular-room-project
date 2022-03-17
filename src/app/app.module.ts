@@ -1,39 +1,40 @@
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { ShoppingListService } from './shopping-list/shopping-list.service';
-import { RecipeService } from './recipes/recipe.service';
-import { AppRoutingModule } from './appRouting.module';
-import { SelectRecipeComponent } from './recipes/select-recipe/select-recipe.component';
-import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthComponent } from './auth/auth.component';
-import { AuthInterceptorService } from './auth/auth-interceptor.service';
-import { RecipeModule } from './recipes/recipe.module';
-import { ShoppingModule } from './shopping-list/shopping.module';
-import { SharedModule } from './shared/shared.module';
-import { CoreModule } from './core.module';
-import { AuthModule } from './auth/auth.module';
-
+import { LoginComponent } from './Auth/Login/Login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule  } from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
+// import { MatAutocompleteModule, MatCheckboxModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatRadioModule, MatSelectModule, MatSlideToggleModule, MatSliderModule  } from '@angular/material';
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-  ],
+
+      AppComponent,
+    LoginComponent
+   ],
   imports: [
-    AppRoutingModule,
-    AuthModule,
     BrowserModule,
-    CoreModule,
-    HttpClientModule,
-    RecipeModule,
-    ShoppingModule,
-    SharedModule,
-
-  ],
-
+    ReactiveFormsModule,
+    MatCardModule,
+    MatInputModule,
+    FormsModule,
+    MatButtonModule,
+    MatIconModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatAutocompleteModule,
+    MatDividerModule
+   ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

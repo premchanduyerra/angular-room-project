@@ -1,0 +1,54 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+.login-card{
+
+  width: 50% ;
+
+
+  background: rgba( 255, 255, 255, 0.3 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 20px );
+  -webkit-backdrop-filter: blur( 20px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+ padding-bottom: 4%;
+}
+
+@media (max-width: 576px) {
+  .login-card{
+    width: 90% ;
+
+  }
+}
+
+.container{
+  padding-top: 5% !important;
+ /* background-image: url("https://cdn.dribbble.com/users/2399335/screenshots/14689261/d_glass-morphism_card_1080p_4x.png"); */
+  /* background-image: url("https://img.freepik.com/free-vector/dark-gradient-background-with-copy-space_53876-99548.jpg?size=626&ext=jpg");
+   */
+   background-image: radial-gradient(circle at 13% 47%, rgba(140, 140, 140,0.03) 0%, rgba(140, 140, 140,0.03) 25%,transparent 25%, transparent 100%),radial-gradient(circle at 28% 63%, rgba(9,69,99, 0.65) 0%, rgba(9,69,99, 0.65) 16%,transparent 16%, transparent 100%),radial-gradient(circle at 81% 56%, rgb(65,65,65) 0%, rgb(65,65,65) 12%,transparent 12%, transparent 100%),radial-gradient(circle at 26% 48%, rgba(60,60,60, 0.74) 0%, rgba(60,60,60, 0.74) 6%,transparent 6%, transparent 100%),radial-gradient(circle at 97% 17%, rgba(154,154,154, 0.56) 0%, rgba(154,154,154, 0.56) 56%,transparent 56%, transparent 100%),radial-gradient(circle at 50% 100%, rgba(25,25,25, 0.38) 0%, rgba(25,25,25, 0.38) 36%,transparent 36%, transparent 100%),radial-gradient(circle at 55% 52%, rgba(69,69,69, 0.66) 0%, rgba(69,69,69, 0.66) 6%,transparent 6%, transparent 100%),linear-gradient(90deg, rgb(26,49,90),rgb(26,49,90));
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  width: 100%;
+
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.example-width{
+  width: 85%;
+  margin-top: 20px;
+}
+.example-button-container button{
+  padding: 2px 50px;
+}

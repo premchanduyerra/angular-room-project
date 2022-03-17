@@ -3,16 +3,19 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 
-import { AppComponent } from './app.component';
+
 import { BasicHighlightDirective } from './basic-highlight/basic-highlight.directive';
 import { UnlessDirective } from './unless/unless.directive';
+import { AppComponent } from './app.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     BasicHighlightDirective,
-    UnlessDirective
-  ],
+    UnlessDirective,
+      AppComponent
+   ],
   imports: [
     BrowserModule,
     FormsModule,
